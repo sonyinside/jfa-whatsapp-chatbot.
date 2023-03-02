@@ -1,0 +1,56 @@
+{
+  "name": "jfa-whatsapp-chatbot",
+  "version": "0.0.1",
+  "description": "WhatsApp Chatbot",
+  "type": "module",
+  "scripts": {
+    "dev": "node --es-module-specifier-resolution=node src/main.js",
+    "dev:detach": "node --es-module-specifier-resolution=node src/main.js >> logs/console.log 2>&1 &",
+    "log:dev": "tail -f logs/console.log",
+    "http-ctrl:dev": "node --es-module-specifier-resolution=node src/httpCtrl.js",
+    "http-ctrl:dev:detach": "node --es-module-specifier-resolution=node src/httpCtrl.js >> logs/http-ctrl-console.log 2>&1 &",
+    "log:http-ctrl:dev": "tail -f logs/http-ctrl-console.log",
+    "start": "pm2 start src/main.js --node-args='--es-module-specifier-resolution=node' --name wchatbot",
+    "stop": "pm2 stop wchatbot",
+    "restart": "pm2 restart wchatbot",
+    "reload": "pm2 reload wchatbot",
+    "log": "pm2 logs wchatbot",
+    "http-ctrl:start": "pm2 start src/httpCtrl.js --node-args='--es-module-specifier-resolution=node'--name wchatbotcp",
+    "http-ctrl:stop": "pm2 stop wchatbotcp",
+    "http-ctrl:restart": "pm2 restart wchatbotcp",
+    "http-ctrl:reload": "pm2 reload wchatbotcp",
+    "http-ctrl:log": "pm2 logs wchatbotcp",
+    "conversations": "tail -f logs/conversations.log",
+    "test": "jest"
+  },
+  "repository": "git@github.com:jfadev/jfa-whatsapp-chatbot.git",
+  "bugs": {
+    "url": "https://github.com/jfadev/jfa-whatsapp-chatbot/issues"
+  },
+  "homepage": "https://github.com/jfadev/jfa-whatsapp-chatbot#readme",
+  "author": "Jordi Fernandes Alves <jfadev@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "nodejs",
+    "whatsapp",
+    "chatbot",
+    "venom",
+    "docker"
+  ],
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "express": "^4.17.3",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "node-fetch": "^3.1.0",
+    "sync-fetch": "^0.4.1",
+    "venom-bot": "4.3.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "babel-jest": "^28.1.3",
+    "jest": "^28.1.3"
+  },
+  "main": "main.js"
+}
